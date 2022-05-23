@@ -319,6 +319,7 @@ public class Matrix
                 
             }
         }
+	streamReader.Close();
 
     }
 }
