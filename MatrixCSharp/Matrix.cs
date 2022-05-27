@@ -277,12 +277,13 @@ public class Matrix
         {
             Directory.CreateDirectory(folderPath);
         }
-        string filename = folderPath + name;
+        string filenameTemp = folderPath + name;
+	string filename = filenameTemp;
         if(isNewFile)
         {
             while(File.Exists(filename + ".txt"))
             {
-                filename = $"{filename}_{++number}";
+                filename = $"{filenameTemp}_{++number}";
             }
         }
 
