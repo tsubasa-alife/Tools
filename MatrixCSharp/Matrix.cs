@@ -262,4 +262,65 @@ public class Matrix
         }
         Debug.Log(str);
     }
+
+    /// <summary>
+    /// 行列保存用メソッド
+    /// </summary>
+    /// <param name="name">ファイル名</param>
+    /// <param name="folderName">フォルダ名</param>
+    /// <param name="isNewFile">連番ファイル名を作るかどうか</param>
+    public void Save(string name="MatrixData", string folderName="MatrixSaveData", bool isNewFile=false)
+    {
+        int number = 1;
+        string folderPath = Application.dataPath + "/" + folderName + "/";
+        if(!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+        string filenameTemp = folderPath + name;
+	string filename = filenameTemp;
+        if(isNewFile)
+        {
+            while(File.Exists(filename + ".txt"))
+            {
+                filename = $"{filenameTemp}_{++number}";
+            }
+        }
+
+        int i = 0;
+        StreamWriter streamWriter = new StreamWriter(filename + ".txt");
+        foreach(var element in elements){
+            i += 1;
+            if((i % columns) == 0){
+                streamWriter.Write(element + "\n");
+            }else{
+                streamWriter.Write(element + ",");
+            }
+        }
+        streamWriter.Flush();
+        streamWriter.Close();
+    }
+
+    public void Load(string name="MatrixData", string folderName="MatrixSaveData")
+    {
+        string filename = Application.dataPath + "/" + folderName + "/" + name + ".txt";
+        StreamReader streamReader = new StreamReader(filename);
+        string strStream = streamReader.ReadToEnd();
+        System.StringSplitOptions option = StringSplitOptions.RemoveEmptyEntries;
+        string []lines = strStream.Split(new char[]{'\r','\n'},option);
+        char []spliter = new char[1]{','};
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                //カンマ分け
+                string [ ] readStrData = lines[i].Split(spliter, option);
+                //型変換
+                elements[i, j] = float.Parse(readStrData[j]);
+                
+            }
+        }
+	streamReader.Close();
+
+    }
 }
