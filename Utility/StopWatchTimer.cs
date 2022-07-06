@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StopWatchTimer : MonoBehaviour
 {
-    private float currentTime;
+    public float currentTime;
     public bool isTimerActive = false;
 
     void Update()
