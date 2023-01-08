@@ -2,7 +2,9 @@ using System;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
-// スクリーンショット撮影用エディタ拡張
+/// <summary>
+/// スクリーンショット撮影用エディタ拡張
+/// </summary>
 public class Screenshot
 {
     [MenuItem("Tools/Screenshot")]

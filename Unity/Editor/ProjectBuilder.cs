@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 
-//コマンドラインビルドを行う際に実行するためのエディタ拡張(Jenkinsでのビルド時など)
+/// <summary>
+/// コマンドラインビルドを行う際に実行するためのエディタ拡張(Jenkinsでのビルド時など)
+/// </summary>
 
 public class ProjectBuilder
 {
-    [MenuItem("Tools/Build/CustomBuild)]
+    [MenuItem("Tools/Build/CustomBuild")]
     public static void CustomBuild()
     {
         Build();

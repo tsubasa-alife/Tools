@@ -6,7 +6,7 @@ public class TimeConverter<T> where T : IComparable
     {
         int minutes = (int)timeSeconds / 60;
         float seconds = timeSeconds - minutes * 60;
-        Debug.Log(minutes.ToString("00") + ":" + ((int)seconds).ToString("00");
+        Debug.Log(minutes.ToString("00") + ":" + ((int)seconds).ToString("00"));
     }
 }
 

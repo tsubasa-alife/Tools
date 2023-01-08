@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// 連想配列からルーレット選択等をするための拡張
+/// </summary>
 public static class DictionaryExtentions
 {
     public static string RouletteSelection(this Dictionary<string,int> dict)

@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// 実機上でログを表示するためのクラス
-// ScrollViewを用意して使用する
+/// <summary>
+/// 実機上でログを表示するためのクラス
+/// ScrollViewを用意して使用する
+/// </summary>
 
 public class LogViewer : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class LogViewer : MonoBehaviour
 
     private void OnDestroy()
     {
-        Application.logMessageReceived += HandleLog;
+        Application.logMessageReceived -= HandleLog;
     }
 
     private void HandleLog(string logText, string stackTrace, LogType type)
