@@ -8,21 +8,13 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Image))]
 public abstract class CustomButton : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler
 {
-	// note:ButtonTypeを追加すると既存のボタンのButtonTypeがずれてしまうので要修正
 	public enum ButtonType
 	{
-		Default,
-		Toggle,
-		Open,
-		Close,
-		Start,
-		End
+		Default
 	}
 
 	public ButtonType buttonType;
 	private Image image;
-	// isOnはトグルボタンとして扱う時用の変数
-	private bool isOn;
 	public System.Action onClickEvent;
 
 	public Image Image
@@ -31,19 +23,9 @@ public abstract class CustomButton : MonoBehaviour,IPointerClickHandler,IPointer
 		set {image = value;}
 	}
 
-	public bool IsOn
-	{
-		get {return isOn;}
-		set {isOn = value;}
-	}
-
 	private void Awake()
 	{
 		image = GetComponent<Image>();
-		if(buttonType == ButtonType.Toggle)
-		{
-			isOn = false;
-		}
 	}
 
 	// クリック or タップした時の挙動は必ず実装する
