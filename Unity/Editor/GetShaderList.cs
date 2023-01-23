@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class GetShaderList : EditorWindow
 {
+	private Vector2 scrollPosition = new Vector2(0,0);
 	[MenuItem("Tools/GetShaderList")]
 	public static void ShowWindow()
 	{
@@ -26,11 +28,15 @@ public class GetShaderList : EditorWindow
 				shaders.Add(material.shader);
 			}
 		}
-
 		// シェーダーの一覧を表示
-		foreach (var shader in shaders)
+		scrollPosition =  EditorGUILayout.BeginScrollView(scrollPosition);
 		{
-			EditorGUILayout.LabelField(shader.name);
+			foreach (var shader in shaders)
+			{
+				EditorGUILayout.LabelField(shader.name);
+			}
 		}
+		EditorGUILayout.EndScrollView();
+		
 	}
 }
