@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 /// <summary>
 /// 自作ボタン用の抽象クラス
@@ -15,17 +16,29 @@ public abstract class CustomButton : MonoBehaviour,IPointerClickHandler,IPointer
 
 	public ButtonType buttonType;
 	private Image image;
+	private TextMeshProGUI buttonText;
 	public System.Action onClickEvent;
 
 	public Image Image
 	{
-		get {return image;}
-		set {image = value;}
+		get
+		{
+			return image;
+		}
+	}
+
+	public TextMeshProGUI ButtonText
+	{
+		get
+		{
+			return buttonText;
+		}
 	}
 
 	private void Awake()
 	{
-		image = GetComponent<Image>();
+		image = this.gameObject.GetComponent<Image>();
+		buttonText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
 	}
 
 	// クリック or タップした時の挙動は必ず実装する
