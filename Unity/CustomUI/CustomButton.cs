@@ -15,9 +15,23 @@ public abstract class CustomButton : MonoBehaviour,IPointerClickHandler,IPointer
 	}
 
 	public ButtonType buttonType;
-	private Image image;
-	private TextMeshProGUI buttonText;
+	[SerializeField] private bool isActive = true;
+	private Image image = null;
+	private TextMeshProGUI buttonText = null;
 	public System.Action onClickEvent;
+
+	public bool IsActive
+	{
+		get
+		{
+			return isActive;
+		}
+		set
+		{
+			isActive = value;
+			Activate();
+		}
+	}
 
 	public Image Image
 	{
@@ -39,6 +53,32 @@ public abstract class CustomButton : MonoBehaviour,IPointerClickHandler,IPointer
 	{
 		image = this.gameObject.GetComponent<Image>();
 		buttonText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+	}
+
+	private void Activate()
+	{
+		if(IsActive)
+		{
+			if(Image != null)
+			{
+				Image.color = new Color(Image.color.r,Image.color.g,Image.color.b,1);
+			}
+			if(ButtonText != null)
+			{
+				ButtonText.color = new Color(ButtonText.color.r,ButtonText.color.g,ButtonText.color.b,1);
+			}
+		}
+		else
+		{
+			if(Image != null)
+			{
+				Image.color = new Color(Image.color.r,Image.color.g,Image.color.b,0.5f);
+			}
+			if(ButtonText != null)
+			{
+				ButtonText.color = new Color(ButtonText.color.r,ButtonText.color.g,ButtonText.color.b,0.5f);
+			}
+		}
 	}
 
 	// クリック or タップした時の挙動は必ず実装する
