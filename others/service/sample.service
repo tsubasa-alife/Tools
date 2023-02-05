@@ -1,0 +1,14 @@
+[Unit]
+Description=Sample daemon
+
+[Service]
+EnvironmentFile=/etc/sysconfig/sample_env
+WorkingDirectory=/hoge
+ExecStart=/hoge
+Restart=always
+User=UserName
+Type=simple
+StandardOutput=file:/hoge/sample.log
+StandardError=file:/hoge/sample_error.log
+[Install]
+WantedBy=multi-user.target
