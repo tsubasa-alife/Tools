@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TimeConverter
 {
-	public string SecondsToMinutes(float timeSeconds)
+	public static string SecondsToMinutes(float timeSeconds)
 	{
 		int minutes = (int)timeSeconds / 60;
 		float seconds = timeSeconds - minutes * 60;
