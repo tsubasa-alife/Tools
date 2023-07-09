@@ -4,10 +4,12 @@ using UnityEngine;
 /// MonoBehaviorのシングルトンパターン利用時のクラス
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 {
 	private static T instance;
  
+	[SerializeField] private bool isDontDestroy = true;
+
 	public static T Instance
 	{
 		get
@@ -34,7 +36,13 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 			return;
 		}
 
-		// シーンを跨いでも消えないように設定
-		DontDestroyOnLoad(this.gameObject);
+		if(isDontDestroy)
+		{
+			// シーンを跨いでも消えないように設定
+			DontDestroyOnLoad(this.gameObject);
+		}
+		doAwake();
 	}
+
+	protected abstract void doAwake();
 }

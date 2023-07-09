@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>SampleName</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+            <key>SAMPLE_TOKEN_A</key>
+            <string>hogehogehoge</string>
+            <key>SAMPLE_TOKEN_B</key>
+            <string>hogehogehoge</string>
+    </dict>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/python</string>
+        <string>/hoge/hoge</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Hoge/hoge</string>
+    <key>UserName</key>
+    <string>username</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/hoge/syslog/hoge.out</string>
+    <key>StandardErrorPath</key>
+    <string>/hoge/syslog/hoge.err</string>
+</dict>
+</plist>
